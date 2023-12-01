@@ -1,0 +1,43 @@
+<div class="container">
+    <h1>Listado de Imágenes</h1>
+    <div class="row">
+      <div class="col-md-4 mb-4" *ngFor="let objeto of imagesUrl">
+        <div class="card">
+          <img [src]="objeto.url" class="card-img-top" alt="Image" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{ objeto.image.title }}</h5>
+            <!-- Aquí puedes agregar más información de la imagen si lo necesitas -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <h1>Búsqueda de Imágenes</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" placeholder="ID de la imagen" #nombre>
+          <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="submit" (click)="loadImages(nombre.value)">Buscar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Sección para mostrar la imagen buscada por ID -->
+    <div *ngIf="imageUrl">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img [src]="imageUrl.url" class="card-img-top" alt="Image" style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">{{ imageUrl.image.title }}</h5>
+              <!-- Otros detalles de la imagen -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
